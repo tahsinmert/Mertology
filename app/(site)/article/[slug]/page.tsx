@@ -7,6 +7,8 @@ import { urlForImage } from "@/lib/sanity/image";
 import PortableRenderer from "./Portable";
 import PageTransition from "../../components/PageTransition";
 import ReadingMode from "../../components/ReadingMode";
+import ArticleInteractions from "../../components/ArticleInteractions";
+import CommentSection from "../../components/CommentSection";
 
 export async function generateStaticParams() {
   const all = (await fetchAllArticles()).length ? await fetchAllArticles() : await getAllArticlesMock();
@@ -54,6 +56,16 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             <PortableRenderer value={(article as any).content} />
           )}
         </div>
+
+        {/* Article Interactions */}
+        <ArticleInteractions 
+          articleSlug={article.slug}
+          initialLikes={Math.floor(Math.random() * 50) + 10}
+          initialComments={Math.floor(Math.random() * 20) + 3}
+        />
+
+        {/* Comments Section */}
+        <CommentSection articleSlug={article.slug} />
         </article>
       </ReadingMode>
     </PageTransition>
