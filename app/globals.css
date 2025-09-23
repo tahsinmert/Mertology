@@ -34,6 +34,14 @@ html {
   background: rgb(113 113 122);
 }
 
+/* Line clamp utility */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
 /* CSS variables for light/dark to pair with Tailwind v4 inline theme */
 :root {
   --background: #ffffff;
