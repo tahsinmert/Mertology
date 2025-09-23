@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ThemeToggle from "@/app/(site)/components/ThemeToggle";
 import ActiveNav from "@/app/(site)/components/ActiveNav";
+import MobileMenu from "@/app/(site)/components/MobileMenu";
 import { fetchAllCategories, fetchAuthors } from "@/lib/sanity/fetchers";
 
 export async function Header() {
@@ -19,6 +20,7 @@ export async function Header() {
             <input name="q" placeholder="Search" className="rounded-md border border-zinc-300 dark:border-zinc-700 bg-transparent px-3 py-1 text-sm" />
           </form>
           <ThemeToggle />
+          <MobileMenu categories={categories} />
         </div>
       </div>
     </header>
