@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "featured-story",
+    "title": "The Poetry of Minimal Interfaces",
+    "category": "Design",
+    "excerpt": "How balance, contrast and whitespace shape editorial-grade digital experiences.",
+    "image": "/window.svg",
+    "author": "Mert",
+    "date": "2024-06-01T00:00:00.000Z",
+    "bodyHtml": "<p>This featured article demonstrates the hero layout using mock data.</p><p>Later, swap with CMS content.</p>"
+  },
+  {
+    "slug": "sample-1",
+    "title": "Quiet Systems 1",
+    "category": "Design",
+    "excerpt": "An exploration into content-first interfaces and the rhythm of reading.",
+    "image": "/globe.svg",
+    "author": "Mert",
+    "date": "2024-01-05T00:00:00.000Z",
+    "bodyHtml": "<p>Minimal, typography-first editorial writing pairs well with generous whitespace.</p>"
+  },
+  {
+    "slug": "sample-2",
+    "title": "Quiet Systems 2",
+    "category": "Culture",
+    "excerpt": "An exploration into content-first interfaces and the rhythm of reading.",
+    "image": "/globe.svg",
+    "author": "Mert",
+    "date": "2024-02-10T00:00:00.000Z",
+    "bodyHtml": "<p>Design principles like balance, scale, and rhythm create calm reading experiences.</p>"
+  },
+  {
+    "slug": "sample-3",
+    "title": "Quiet Systems 3",
+    "category": "Travel",
+    "excerpt": "An exploration into content-first interfaces and the rhythm of reading.",
+    "image": "/globe.svg",
+    "author": "Mert",
+    "date": "2024-03-12T00:00:00.000Z",
+    "bodyHtml": "<p>Mock content prepared for CMS integration later.</p>"
+  },
+  {
+    "slug": "sample-4",
+    "title": "Quiet Systems 4",
+    "category": "Technology",
+    "excerpt": "An exploration into content-first interfaces and the rhythm of reading.",
+    "image": "/globe.svg",
+    "author": "Mert",
+    "date": "2024-04-21T00:00:00.000Z",
+    "bodyHtml": "<p>Another mock post.</p>"
+  }
+]
+
+
