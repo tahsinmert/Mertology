@@ -15,7 +15,7 @@ export default function CategoriesShowcase({ categories }: { categories: Categor
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className="group relative rounded-2xl p-6 md:p-7 bg-zinc-50/90 dark:bg-zinc-950/60 hover:bg-zinc-50 dark:hover:bg-zinc-950 shadow-[0_1px_0_0_rgba(0,0,0,0.02)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.04)] transition-colors"
+            className="group relative rounded-2xl p-6 md:p-7 bg-zinc-50 dark:bg-zinc-950/60 hover:bg-zinc-50 dark:hover:bg-zinc-950 shadow-[0_1px_0_0_rgba(0,0,0,0.02)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.04)] transition-colors"
           >
             <span className="text-xs tracking-widest uppercase text-zinc-500">Category</span>
             <h3 className="mt-2 font-serif text-2xl md:text-3xl leading-snug group-hover:opacity-80">
