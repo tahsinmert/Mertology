@@ -15,7 +15,7 @@ export default function CategoriesShowcase({ categories }: { categories: Categor
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className="group relative rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6 md:p-7 bg-white/60 dark:bg-zinc-950/60 hover:bg-white dark:hover:bg-zinc-950 shadow-[0_1px_0_0_rgba(0,0,0,0.02)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.04)] transition-colors"
+            className="group relative rounded-2xl p-6 md:p-7 bg-zinc-50/90 dark:bg-zinc-950/60 hover:bg-zinc-50 dark:hover:bg-zinc-950 shadow-[0_1px_0_0_rgba(0,0,0,0.02)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.04)] transition-colors"
           >
             <span className="text-xs tracking-widest uppercase text-zinc-500">Category</span>
             <h3 className="mt-2 font-serif text-2xl md:text-3xl leading-snug group-hover:opacity-80">
@@ -26,7 +26,7 @@ export default function CategoriesShowcase({ categories }: { categories: Categor
             ) : (
               <div className="mt-3 h-8" />
             )}
-            <span className="pointer-events-none absolute right-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 group-hover:translate-x-1 transition-transform">→</span>
+            <span className="pointer-events-none absolute right-4 bottom-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-zinc-700 dark:text-zinc-300 group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         ))}
       </div>
