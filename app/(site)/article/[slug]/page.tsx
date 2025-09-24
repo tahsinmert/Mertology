@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getArticleBySlug as getArticleBySlugMock, getAllArticles as getAllArticlesMock } from "@/lib/mock";
 import { fetchArticleBySlug, fetchAllArticles } from "@/lib/sanity/fetchers";
 import { urlForImage } from "@/lib/sanity/image";
@@ -12,6 +13,25 @@ import ReadingProgress from "../../components/ReadingProgress";
 export async function generateStaticParams() {
   const all = (await fetchAllArticles()).length ? await fetchAllArticles() : await getAllArticlesMock();
   return all.map((a) => ({ slug: a.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const a = (await fetchArticleBySlug(params.slug)) || (await getArticleBySlugMock(params.slug));
+  if (!a) return {};
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://mertology.netlify.app";
+  const ogImg = typeof a.image === "string" ? a.image : urlForImage(a.image).width(1200).height(630).url();
+  return {
+    title: a.title,
+    description: a.excerpt || `${a.title} — ${a.category}`,
+    openGraph: {
+      title: a.title,
+      description: a.excerpt || `${a.title} — ${a.category}`,
+      type: "article",
+      url: `${url}/article/${a.slug}`,
+      images: [{ url: ogImg }],
+    },
+    twitter: { card: "summary_large_image", title: a.title, description: a.excerpt || undefined, images: [ogImg] },
+  };
 }
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
@@ -26,6 +46,22 @@ export default async function ArticlePage({ params }: { params: { slug: string }
         author={article.author}
         publishedAt={new Date(article.date).toLocaleDateString()}
       >
+        {/* JSON-LD Article Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: article.title,
+              datePublished: new Date(article.date).toISOString(),
+              author: { '@type': 'Person', name: article.author },
+              articleSection: article.category,
+              image: typeof article.image === 'string' ? article.image : urlForImage(article.image).width(1200).height(630).url(),
+              mainEntityOfPage: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://mertology.netlify.app'}/article/${article.slug}`,
+            }),
+          }}
+        />
         <article className="px-6 md:px-10 lg:px-16 py-10 md:py-16">
         <header className="max-w-3xl mx-auto text-center">
           <span className="text-xs tracking-widest uppercase text-zinc-500">{article.category}</span>

@@ -15,6 +15,8 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mertology.netlify.app";
+
 export const metadata: Metadata = {
   title: {
     default: "Mertology — Modern Magazine Blog",
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
   },
   description:
     "Mertology: Minimal, typography-first editorial blog inspired by premium magazines.",
-  metadataBase: new URL("https://mertology.example"),
+  metadataBase: new URL(siteUrl),
   manifest: "/site.webmanifest",
   icons: {
     icon: [

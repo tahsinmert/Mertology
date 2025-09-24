@@ -1,4 +1,5 @@
 import ArticleCard from "@/app/(site)/components/ArticleCard";
+import type { Metadata } from "next";
 import Pagination from "@/app/(site)/components/Pagination";
 import PageTransition from "@/app/(site)/components/PageTransition";
 import { getArticlesByCategory, getAllCategories } from "@/lib/mock";
@@ -34,6 +35,18 @@ export default async function CategoryPage({
       </main>
     </PageTransition>
   );
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const title = `${params.slug} — Category`;
+  const desc = `Read the latest articles in ${params.slug} on Mertology.`;
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "https://mertology.netlify.app";
+  return {
+    title,
+    description: desc,
+    openGraph: { title, description: desc, url: `${url}/category/${params.slug}` },
+    twitter: { title, description: desc },
+  };
 }
 
 
