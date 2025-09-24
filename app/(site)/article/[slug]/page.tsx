@@ -7,6 +7,7 @@ import { urlForImage } from "@/lib/sanity/image";
 import PortableRenderer from "./Portable";
 import PageTransition from "../../components/PageTransition";
 import ReadingMode from "../../components/ReadingMode";
+import ReadingProgress from "../../components/ReadingProgress";
 
 export async function generateStaticParams() {
   const all = (await fetchAllArticles()).length ? await fetchAllArticles() : await getAllArticlesMock();
@@ -19,6 +20,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
   return (
     <PageTransition>
+      <ReadingProgress />
       <ReadingMode 
         title={article.title}
         author={article.author}

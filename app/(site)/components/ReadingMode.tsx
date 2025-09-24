@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { BookOpen, X, Maximize2, Minimize2 } from "lucide-react";
+import ReadingProgress from "./ReadingProgress";
 
 interface ReadingModeProps {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ interface ReadingModeProps {
 export default function ReadingMode({ children, title, author, publishedAt }: ReadingModeProps) {
   const [isReadingMode, setIsReadingMode] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const containerId = "reading-mode-scroll";
 
   const toggleReadingMode = () => {
     setIsReadingMode(!isReadingMode);
@@ -69,6 +71,7 @@ export default function ReadingMode({ children, title, author, publishedAt }: Re
 
   return (
     <div className="fixed inset-0 z-50 bg-white dark:bg-zinc-900">
+      <ReadingProgress targetId={containerId} />
       {/* Reading Mode Header */}
       <div className="sticky top-0 z-10 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700 px-6 py-4">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
@@ -107,7 +110,7 @@ export default function ReadingMode({ children, title, author, publishedAt }: Re
       </div>
 
       {/* Reading Mode Content */}
-      <div className="max-w-4xl mx-auto px-6 py-8 overflow-y-auto h-full">
+      <div id={containerId} className="max-w-4xl mx-auto px-6 py-8 overflow-y-auto h-full">
         <div className="prose-custom prose-columns">
           {children}
         </div>
